@@ -90,6 +90,6 @@ output "public_ip" {
 }
 
 resource "aws_key_pair" "devops_key" {
-  key_name   = "terraform-devops-key"
+  key_name   = "jenkins-terraform-devops-key"
   public_key = file("${path.module}/devops-key.pub")
 }
