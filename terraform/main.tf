@@ -5,6 +5,13 @@ terraform {
       version = "~> 6.0"
     }
   }
+
+  backend "s3" {
+    bucket       = "saju-terraform-state-834877788713"
+    key          = "devops-lab/terraform.tfstate"
+    region       = "ap-south-2"
+    use_lockfile = true
+  }
 }
 
 provider "aws" {
@@ -90,6 +97,10 @@ output "public_ip" {
 }
 
 resource "aws_key_pair" "devops_key" {
-  key_name   = "jenkins-terraform-devops-key"
+  key_name   = "terraform-devops-key"
   public_key = file("${path.module}/devops-key.pub")
+
+  lifecycle {
+    ignore_changes = [public_key]
+  }
 }
