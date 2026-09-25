@@ -1,0 +1,13 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+*.tfplan
+
+# Keys / credentials
+*.pe*
+*.key
+
+# Terraform installer
+*.zi*
